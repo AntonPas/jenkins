@@ -36,6 +36,7 @@ pipeline {
           dockerImage = docker.build registry
         }
 
+        sh 'command -v docker '
       }
     }
 
