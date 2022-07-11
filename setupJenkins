@@ -1,0 +1,9 @@
+docker pull jenkins/jenkins
+#docker run -p 8080:8080 --name=jenkins-master -d jenkins/jenkins
+docker run -p 8080:8080 --name=jenkins-master -v /var/run/docker.sock:/var/run/docker.sock --privileged -it jenkins/jenkins
+
+docker run --rm -d -u root -p 8080:8080 -p 50000:50000 \
+        -v jenkins-data:/var/jenkins_home -v $(which docker):/usr/bin/docker \
+        -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME":/home jenkinsci/blueocean
+
+docker run -p 8080:8080 -u root --name=jenkins-master -v /var/run/docker.sock:/var/run/docker.sock --privileged -it -d jenkinsci/blueocean
