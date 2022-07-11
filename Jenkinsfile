@@ -32,11 +32,11 @@ pipeline {
 
     stage('Build image') {
       steps {
+        sh 'command -v docker '
         script {
           dockerImage = docker.build registry
         }
 
-        sh 'command -v docker '
       }
     }
 
