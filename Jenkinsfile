@@ -32,7 +32,7 @@ pipeline {
 
     stage('Build image') {
       steps {
-        sh 'command -v docker '
+        sh 'apk add --update docker'
         script {
           dockerImage = docker.build registry
         }
